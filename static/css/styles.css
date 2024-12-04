@@ -1,0 +1,253 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc; /* Light blue background */
+    color: #333;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #4a90e2; /* Blue */
+    margin: 20px 0;
+    font-size: 2.5rem;
+}
+
+/* Form Styles */
+form {
+    background: #4a90e2; /* Blue background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form input, form select, form button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+form input, form select {
+    background-color: #fff;
+    color: #333;
+}
+
+form button {
+    background-color: #2ecc71; /* Green */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #27ae60; /* Darker green */
+}
+
+/* Transactions List */
+#transactions {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#transactions div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f1f1; /* Light gray */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#transactions div.income {
+    border-left: 5px solid #2ecc71; /* Green for income */
+}
+
+#transactions div.expense {
+    border-left: 5px solid #e74c3c; /* Red for expense */
+}
+
+/* Summary Page */
+p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+p span {
+    font-weight: bold;
+}
+
+a {
+    display: block;
+    text-align: center;
+    background: #3498db; /* Blue button */
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 200px;
+}
+
+a:hover {
+    background: #2980b9; /* Darker blue */
+}
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #004080;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+}
+
+header .back-button {
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    background-color: #00274d;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+header .back-button:hover {
+    background-color: #001d39;
+}
+
+/* Profile Page */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.profile-picture {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #004080;
+    object-fit: cover;
+}
+
+.upload-button {
+    margin-top: 10px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: #00274d;
+}
+
+.profile-details {
+    flex: 2;
+    padding: 0 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: none;
+    height: 100px;
+}
+
+.save-button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.save-button:hover {
+    background-color: #00274d;
+}
+
+a.back-to-dashboard {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: white; /* Change text color to white */
+    text-decoration: none;
+    background-color: #3498db; /* Optional: background color */
+    padding: 10px 15px; /* Optional: padding for button-like appearance */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+a.back-to-dashboard:hover {
+    text-decoration: underline;
+    background-color: #3498db; /* Optional: change background on hover */
+}
+

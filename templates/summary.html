@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        /* Custom styles for summary */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 30px;
+            color: #004080;
+        }
+
+        .summary-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-item {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            color: #004080;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .income-item {
+            background-color: #d4edda; /* Light green */
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .expense-item {
+            background-color: #cce5ff; /* Light blue */
+            border: 1px solid #b8daff;
+            color: #004085;
+        }
+
+        .balance-item {
+            background-color: #e2e3f3; /* Lighter blue */
+            border: 1px solid #d6d8eb;
+            color: #383d41;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #004080;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-back:hover {
+            background-color: #003060;
+        }
+    </style>
+</head>
+<body>
+    <h1>Summary</h1>
+    <div class="summary-container">
+        <!-- Total Income -->
+        <div class="summary-item income-item">
+            Total Income: ${{ income }}
+        </div>
+
+        <!-- Total Expense -->
+        <div class="summary-item expense-item">
+            Total Expense: ${{ expense }}
+        </div>
+
+        <!-- Remaining Balance -->
+        <div class="summary-item balance-item">
+            Remaining Balance: ${{ balance }}
+        </div>
+    </div>
+    <a href="{{ url_for('dashboard') }}" class="btn-back">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Calendar</title>
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f7f9fc;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .fc-event {
+            padding: 5px;
+            font-size: 14px;
+            color: white !important;
+            text-align: center;
+        }
+        .fc-event-income {
+            background-color: #4caf50; /* Green for income */
+            border-color: #388e3c;
+        }
+        .fc-event-expense {
+            background-color: #f44336; /* Red for expense */
+            border-color: #d32f2f;
+        }
+        .btn-back {
+            display: inline-block;
+            text-align: center;
+            margin: 20px auto;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transaction Calendar</h1>
+    <div id="calendar"></div>
+    <center><a href="{{ url_for('dashboard') }}" class="btn-back">Back to Dashboard</a></center>
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: {{ events | tojson }},
+                eventDidMount: function(info) {
+                    // Differentiate between income and expense visually
+                    if (info.event.extendedProps.type === 'income') {
+                        info.el.classList.add('fc-event-income');
+                    } else if (info.event.extendedProps.type === 'expense') {
+                        info.el.classList.add('fc-event-expense');
+                    }
+                    // Customize event content to show amount and type
+                    const titleDiv = document.createElement('div');
+                    titleDiv.innerHTML = ` 
+                        <strong>${info.event.extendedProps.type.toUpperCase()}</strong><br>
+                        ${info.event.title}<br>
+                        <span style="font-size: 12px;">Amount: $${info.event.extendedProps.amount}</span>
+                    `;
+                    info.el.innerHTML = '';
+                    info.el.appendChild(titleDiv);
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

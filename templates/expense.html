@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Expense</title>
+</head>
+<body>
+    <h1>Add Expense</h1>
+    <form id="expense-form">
+        <input type="date" id="date" required>
+        <input type="text" id="description" placeholder="Description (e.g., 'Salary')" required>
+        <input type="number" id="amount" placeholder="Amount (e.g., 500)" required>
+        <button type="submit">Add expense</button>
+    </form>
+    <a href="/">Back to Dashboard</a>
+    <script>
+        const form = document.getElementById('expense-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const date = document.getElementById('date').value;
+            const description = document.getElementById('description').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            await fetch('/expense', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ date,description, amount }),
+            });
+            alert('expense added successfully!');
+            form.reset();
+        });
+    </script>
+</body>
+</html>

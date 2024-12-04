@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Income</title>
+</head>
+<body>
+    <h1>Add Income</h1>
+    <form id="income-form">
+        <!-- Date Input -->
+        <input type="date" id="date" required>
+        
+        <!-- Description Input -->
+        <input type="text" id="description" placeholder="Description (e.g., 'Salary')" required>
+        
+        <!-- Amount Input -->
+        <input type="number" id="amount" placeholder="Amount (e.g., 500)" required>
+        
+        <!-- Submit Button -->
+        <button type="submit">Add Income</button>
+    </form>
+    
+    <!-- Back to Dashboard -->
+    <a href="/">Back to Dashboard</a>
+    
+    <script>
+        const form = document.getElementById('income-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const date = document.getElementById('date').value;
+            const description = document.getElementById('description').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            
+            // Send data to the server
+            await fetch('/income', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ date, description, amount }),
+            });
+            
+            // Show success message and reset the form
+            alert('Income added successfully!');
+            form.reset();
+        });
+    </script>
+</body>
+</html>
+

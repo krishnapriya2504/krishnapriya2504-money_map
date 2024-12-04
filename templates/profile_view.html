@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .profile-detail {
+            margin-bottom: 15px;
+        }
+        .profile-detail strong {
+            font-weight: bold;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Profile</h1>
+        <div class="profile-detail">
+            <strong>Name:</strong> {{ profile['name'] }}
+        </div>
+        <div class="profile-detail">
+            <strong>Email:</strong> {{ profile['email'] }}
+        </div>
+        <div class="profile-detail">
+            <strong>Phone:</strong> {{ profile['phone'] }}
+        </div>
+        <div class="profile-detail">
+            <strong>Bio:</strong> {{ profile['bio'] }}
+        </div>
+        <a href="/" class="back-to-dashboard">Back to Dashboard</a>
+
+    </div>
+</body>
+</html>
+

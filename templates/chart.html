@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction and Summary Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .chart-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #004080;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-back:hover {
+            background-color: #003060;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transaction and Summary Charts</h1>
+
+    <!-- Chart for Summary -->
+    <div class="chart-container">
+        <h2>Summary (Income vs Expense)</h2>
+        <canvas id="summaryChart"></canvas>
+    </div>
+
+    <!-- Chart for Transactions -->
+    <div class="chart-container">
+        <h2>Transactions Over Time</h2>
+        <canvas id="transactionsChart"></canvas>
+    </div>
+
+    <a href="/" class="btn-back">Back to Dashboard</a>
+
+    <script>
+        // Fetching data dynamically passed from Flask
+        const summaryData = JSON.parse('{{ summary_data | tojson | safe }}');
+        const transactionData = JSON.parse('{{ transaction_data | tojson | safe }}');
+
+        // Prepare data for Summary Chart
+        const summaryChartData = {
+            labels: ['Income', 'Expense', 'Balance'],
+            datasets: [{
+                label: 'Summary',
+                data: [summaryData.income, summaryData.expense, summaryData.balance],
+                backgroundColor: ['#4caf50', '#f44336', '#2196f3'],
+                borderColor: ['#388e3c', '#d32f2f', '#1976d2'],
+                borderWidth: 1
+            }]
+        };
+
+        // Render Summary Chart
+        const summaryCtx = document.getElementById('summaryChart').getContext('2d');
+        new Chart(summaryCtx, {
+            type: 'pie',
+            data: summaryChartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Income vs Expense vs Balance'
+                    }
+                }
+            }
+        });
+
+        // Prepare data for Transactions Over Time Chart
+        const transactionDates = transactionData.map(t => t.date);
+        const incomeData = transactionData.filter(t => t.type === 'income').map(t => t.amount);
+        const expenseData = transactionData.filter(t => t.type === 'expense').map(t => t.amount);
+
+        const transactionsChartData = {
+            labels: transactionDates,
+            datasets: [
+                {
+                    label: 'Income',
+                    data: incomeData,
+                    borderColor: '#4caf50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.5)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Expense',
+                    data: expenseData,
+                    borderColor: '#f44336',
+                    backgroundColor: 'rgba(244, 67, 54, 0.5)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Render Transactions Over Time Chart
+        const transactionsCtx = document.getElementById('transactionsChart').getContext('2d');
+        new Chart(transactionsCtx, {
+            type: 'line',
+            data: transactionsChartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Transactions Over Time'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Amount ($)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .setting-option {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Settings</h1>
+    <form method="POST">
+        <div class="setting-option">
+            <label for="theme">Theme:</label>
+            <select name="theme" id="theme">
+                <option value="light" {% if settings['theme'] == 'light' %}selected{% endif %}>Light</option>
+                <option value="dark" {% if settings['theme'] == 'dark' %}selected{% endif %}>Dark</option>
+            </select>
+        </div>
+        <button type="submit">Save Settings</button>
+    </form>
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

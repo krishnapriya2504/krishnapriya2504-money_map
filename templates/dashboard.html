@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>MONEYMAP</h2>
+            <nav>
+                <ul>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/chart">Chart</a></li>
+                    <li><a href="/calendar">Calendar</a></li>
+                    <li> <a href="/generate-report" class="btn">Generate Report</a></li>
+                    <li><a href="/settings">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header>
+                <h1>DASHBOARD</h1>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <button>🔍</button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <a href="/income" class="dashboard-card">
+                   <center> <img src="/static/images/income-icon.png" alt="Income Icon"></center>
+                    <button>INCOME</button>
+                </a>
+                <a href="/summary" class="dashboard-card">
+                    <center><img src="/static/images/budget-icon.png" alt="Budget Icon"></center>
+                    <button>BUDGET</button>
+                </a>
+                <a href="/expense" class="dashboard-card">
+                    <center><img src="/static/images/expense-icon.png" alt="Expense Icon"></center>
+                    <button>EXPENSE</button>
+                </a>
+                <a href="/transactions" class="dashboard-card">
+                    <center><img src="/static/images/transaction-icon.png" alt="Transaction Icon"></center>
+                    <button>TRANSACTION</button>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
